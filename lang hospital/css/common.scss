@@ -1,0 +1,114 @@
+@charset "UTF-8";
+@import 'sassConfig';
+body{
+    margin: 0;
+    color: #00aab7;
+    font-family: '微软雅黑';
+    font-size: 12px;
+}
+
+// 清除浮动(暂时不用理解)
+.clearfix:after{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    display: inline-block;
+}
+* html .clearfix{
+    height: 1%;
+}
+.clearfix{
+    display: block;
+}
+
+// 主体颜色
+.color-main{
+    color: $color-main;
+}
+// 次要颜色
+.color-second{
+    color: $color-main;
+}
+// 主体文字
+.text-main{
+    color: $text-main;
+}
+// 通用容器
+.container{
+    width: $container;
+    margin: 0 auto;
+}
+// 左浮动
+.pull-left{
+    float: left;
+}
+// 右浮动
+.pull-right{
+    float: right;
+}
+// 顶部logo
+.logo{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    img{
+        display: block;
+    }
+}
+
+// 顶部菜单
+.menu-link{
+    // 文字只有一行时可以让行高和块元素高度一致来达成文字上下居中
+    line-height: 22px;
+    a,span,div{
+        float: right;
+    }
+    a{
+        color: $text-gray;
+    }
+    .link{
+        width: 1px;
+        height: 12px;
+        // 边距：上6 左右11 下0
+        margin: 6px 11px 0;
+        background-color: $text-gray;
+    }
+}
+// 顶部语言菜单
+.language{
+    width: 53px;
+    height: 22px;
+    background-color: #efefef;
+    color: $text-gray;
+    text-align: center;
+    // 左上角语言切换的小箭头
+    i{
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+
+        // 方法1：切图放入背景图片
+        background-image: url(../image/language.jpg);
+        // 控制背景图片不平铺重复
+        background-repeat: no-repeat;
+
+        // // 方法二：css制作边框之后旋转
+        // border-left: 1px solid $text-gray;
+        // border-bottom: 1px solid $text-gray;
+        // // css3属性，可以让元素本身和边框border不再重复计算(配合scss变成)
+        // @include webkit(box-sizing, border-box);
+        // // 控制旋转
+        // @include webkit(transform, rotate(-45deg));
+        // // 箭头靠下上提
+        // margin-bottom: 4px;
+    }
+    // 方法三：css3伪元素
+    &：after{
+        // content: 里面可以放文字和图片;
+        content: '';
+        // 之后把上面的i标签里的内容放进来就可以
+    }
+}
